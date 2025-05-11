@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "4100401566",
+    "project_id": "habits-database",
+    "storage_bucket": "habits-database.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:4100401566:android:2f33ca8e6278fae972ce8f",
+        "android_client_info": {
+          "package_name": "com.finpofe.habits"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpAxDZYXgfwsKu2bUbwuUVnjir_NrC-AE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

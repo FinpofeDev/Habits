@@ -22,7 +22,7 @@ class SplashActivity : AppCompatActivity() {
         //Splash abierto hasta que se cumpla esto
         lifecycleScope.launch{
             delay(2000) //En lugar de delay, cargar datos xd
-            startActivity(Intent(this@SplashActivity, MainActivity::class.java)) //Se inicia la Main
+            startActivity(Intent(this@SplashActivity, LoginActivity::class.java)) //Se inicia la Main
             finish() //Finaliza la activity
         }
     }
