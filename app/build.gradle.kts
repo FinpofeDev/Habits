@@ -49,6 +49,11 @@ dependencies {
     //Firebase APIS
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
+    implementation(libs.firebase.auth.ktx)
+    implementation("androidx.credentials:credentials:1.5.0")
+    implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
+    implementation(libs.googleid)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
