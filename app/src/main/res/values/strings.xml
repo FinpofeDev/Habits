@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Habits</string>
+
+    <!-- Login layout -->
+    <string name="login_button">Iniciar Sesión</string>
+    <string name="email_text">Correo</string>
+    <string name="pass_text">Contraseña</string>
+    <string name="register_text">¿No estás registrado? Registrate</string>
+
+    <string name="id_client_web">4100401566-f46c60kacm96131q4v0roqgaju164e2p.apps.googleusercontent.com</string>
 </resources>
