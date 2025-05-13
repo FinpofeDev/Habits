@@ -2,16 +2,12 @@ package com.finpofe.habits
 
 import android.os.Bundle
 import android.content.Intent
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class SplashActivity : AppCompatActivity() {
@@ -20,15 +16,14 @@ class SplashActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         val splashScreen = installSplashScreen() //Se guarda la referencia del splash
         super.onCreate(savedInstanceState)
 
+        //Mantener splash abierto hasta que cargue
+        splashScreen.setKeepOnScreenCondition { true }
+
         //Se inicializa auth
         auth = Firebase.auth
-
-        //Mantener splash abierto hasta que este listo lo demas
-        splashScreen.setKeepOnScreenCondition { true }
 
         //Referencia al usuario actual
         val currentUser = auth.currentUser

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Habits</string>
+    <string name="version_app">1.0.0</string>
 
     <!-- Login layout -->
     <string name="login_button">Iniciar Sesión</string>
@@ -7,5 +8,14 @@
     <string name="pass_text">Contraseña</string>
     <string name="register_text">¿No estás registrado? Registrate</string>
 
-    <string name="id_client_web">4100401566-f46c60kacm96131q4v0roqgaju164e2p.apps.googleusercontent.com</string>
+    <!-- Register layout -->
+    <string name="register_titulo">Registro de usuario</string>
+    <string name="campo_nombre">Nombre</string>
+    <string name="fecha_default">dd/mm/aaaa</string>
+    <string name="fecha_button">Seleccionar fecha</string>
+    <string name="campo_repass">Validar Contraseña</string>
+    <string name="imagen_button">Seleccionar imagen</string>
+    <string name="registro_button">Registrarse</string>
+
+    <string name="default_web_client_id">4100401566-f46c60kacm96131q4v0roqgaju164e2p.apps.googleusercontent.com</string>
 </resources>
