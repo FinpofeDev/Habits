@@ -5,6 +5,136 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/nord2"
     tools:context=".RegisterActivity">
+
+    <TextView
+        android:id="@+id/tituloRegistro_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register_titulo"
+        android:textColor="@color/nord6"
+        android:textSize="25sp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/correo_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="15"
+        android:layout_marginTop="25dp"
+        android:hint="@string/email_text"
+        android:textColorHint="@color/nord9"
+        android:backgroundTint="@color/nord9"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tituloRegistro_lbl" />
+
+    <EditText
+        android:id="@+id/nombre_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="15"
+        android:inputType="text"
+        android:layout_marginTop="25dp"
+        android:hint="@string/campo_nombre"
+        android:textColorHint="@color/nord9"
+        android:backgroundTint="@color/nord9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/correo_txt" />
+
+    <TextView
+        android:id="@+id/fecha_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/fecha_default"
+        android:textColor="@color/nord8"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombre_txt" />
+
+    <Button
+        android:id="@+id/fecha_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/fecha_button"
+        android:backgroundTint="@color/nord7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/nombre_txt" />
+
+    <EditText
+        android:id="@+id/pass_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="15"
+        android:inputType="textPassword"
+        android:layout_marginTop="25dp"
+        android:hint="@string/pass_text"
+        android:textColorHint="@color/nord9"
+        android:backgroundTint="@color/nord9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fecha_btn" />
+
+    <EditText
+        android:id="@+id/repass_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:layout_marginTop="25dp"
+        android:hint="@string/campo_repass"
+        android:textColorHint="@color/nord9"
+        android:backgroundTint="@color/nord9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pass_txt" />
+
+    <ImageView
+        android:id="@+id/img_prof"
+        android:layout_width="84dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/repass_txt"
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+    <Button
+        android:id="@+id/imagen_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/imagen_button"
+        android:backgroundTint="@color/nord7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/repass_txt" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/registro_button"
+        android:backgroundTint="@color/nord9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_prof" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="204dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

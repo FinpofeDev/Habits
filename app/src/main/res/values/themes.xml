@@ -11,8 +11,9 @@
         <!-- Color de fondo -->
         <item name="windowSplashScreenBackground">@color/nord0</item>
         <!-- Ícono-->
-        <item name="windowSplashScreenAnimatedIcon">@drawable/habits_logo_temp</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_logo</item>
         <!-- Tema que se aplicará después de cerrar el splash -->
         <item name="postSplashScreenTheme">@style/Theme.Habits</item>
     </style>
+
 </resources>
