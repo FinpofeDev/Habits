@@ -88,7 +88,7 @@
         android:id="@+id/repass_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:ems="15"
         android:inputType="textPassword"
         android:layout_marginTop="25dp"
         android:hint="@string/campo_repass"
@@ -120,7 +120,7 @@
         app:layout_constraintTop_toBottomOf="@+id/repass_txt" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/register_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"

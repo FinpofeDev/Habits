@@ -7,6 +7,7 @@
     <string name="email_text">Correo</string>
     <string name="pass_text">Contraseña</string>
     <string name="register_text">¿No estás registrado? Registrate</string>
+    <string name="login_google">Iniciar con Google</string>
 
     <!-- Register layout -->
     <string name="register_titulo">Registro de usuario</string>
