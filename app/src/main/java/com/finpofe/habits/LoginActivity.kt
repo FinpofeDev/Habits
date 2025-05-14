@@ -5,10 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
+import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -36,9 +37,10 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var emailEdt: EditText
     private lateinit var passEdt: EditText
     private lateinit var loginBtn: Button
-    private lateinit var googlebtn: ImageView
+    private lateinit var googlebtn: FrameLayout
     private lateinit var registerbtn: TextView
     private lateinit var context: Context
+    private var loadingDialog: LoadingDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,8 +75,8 @@ class LoginActivity : AppCompatActivity() {
 
         emailEdt = findViewById(R.id.email_txt)
         passEdt = findViewById(R.id.password_txt)
-        loginBtn = findViewById(R.id.login_Btn)
-        googlebtn = findViewById(R.id.google_img)
+        loginBtn = findViewById(R.id.login_btn)
+        googlebtn = findViewById(R.id.container_login)
         registerbtn = findViewById(R.id.register_lbl)
         context = this
     }
@@ -117,6 +119,7 @@ class LoginActivity : AppCompatActivity() {
             .build()
 
         lifecycleScope.launch {
+            mostrarCarga()
             try {
                 val result = credentialManager.getCredential(
                     context = this@LoginActivity,
@@ -125,6 +128,8 @@ class LoginActivity : AppCompatActivity() {
                 manejarInicioSesionGoogle(result.credential)
             } catch (e: GetCredentialException) {
                 Toast.makeText(context, "Error al recuperar credenciales", Toast.LENGTH_SHORT).show()
+            } finally {
+                ocultarCarga()
             }
         }
 
@@ -149,6 +154,20 @@ class LoginActivity : AppCompatActivity() {
         } else {
             Toast.makeText(context, "La credencial no es de tipo Google ID", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    @UiThread
+    private fun mostrarCarga() {
+        if (loadingDialog == null) {
+            loadingDialog = LoadingDialog(this)
+        }
+        loadingDialog?.show()
+    }
+
+    @UiThread
+    private fun ocultarCarga() {
+        loadingDialog?.dismiss()
+        loadingDialog = null
     }
 
 }
