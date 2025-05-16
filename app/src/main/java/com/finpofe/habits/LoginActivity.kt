@@ -3,6 +3,7 @@ package com.finpofe.habits
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
@@ -19,20 +20,24 @@ import androidx.credentials.CustomCredential
 import androidx.credentials.GetCredentialRequest
 import androidx.credentials.exceptions.GetCredentialException
 import androidx.lifecycle.lifecycleScope
+import com.finpofe.habits.objetos.Usuario
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential.Companion.TYPE_GOOGLE_ID_TOKEN_CREDENTIAL
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.database
 import kotlinx.coroutines.launch
 
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var credentialManager: CredentialManager
+    private lateinit var database: DatabaseReference
 
     private lateinit var emailEdt: EditText
     private lateinit var passEdt: EditText
@@ -71,7 +76,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun iniciarVariables(){
         auth = Firebase.auth
-        credentialManager = CredentialManager.create(baseContext)
+        database = Firebase.database.reference
 
         emailEdt = findViewById(R.id.email_txt)
         passEdt = findViewById(R.id.password_txt)
@@ -90,8 +95,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun iniciarSesion () {
-        var correo = emailEdt.text.toString()
-        var pass = passEdt.text.toString()
+        val correo = emailEdt.text.toString()
+        val pass = passEdt.text.toString()
 
 
         if (validarDatos(correo, pass)) {
@@ -109,6 +114,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun iniciarCredentialManager () {
+       val credentialManager = CredentialManager.create(this@LoginActivity)
+
         val googleIdOption = GetGoogleIdOption.Builder()
             .setServerClientId(getString(R.string.default_web_client_id))
             .setFilterByAuthorizedAccounts(false)
@@ -128,6 +135,8 @@ class LoginActivity : AppCompatActivity() {
                 manejarInicioSesionGoogle(result.credential)
             } catch (e: GetCredentialException) {
                 Toast.makeText(context, "Error al recuperar credenciales", Toast.LENGTH_SHORT).show()
+                Log.e("LoginActivity", "Error en CredentialManager: ", e)
+
             } finally {
                 ocultarCarga()
             }
@@ -139,8 +148,19 @@ class LoginActivity : AppCompatActivity() {
         val credencial = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credencial).addOnCompleteListener { task ->
             if(task.isSuccessful) {
-                Toast.makeText(context, "Inicio de sesion exitoso", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(context, MainActivity::class.java))
+                val user: FirebaseUser? = auth.currentUser
+                val userId = user?.uid?: ""
+
+                val nombreCompleto = user?.displayName
+                val correo = user?.email
+
+                val usuario = Usuario(nombreCompleto, correo, "", "")
+                database.child("users").child(userId).setValue(usuario)
+
+                Toast.makeText(this@LoginActivity, "Inicio de sesion exitoso", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                finish()
+
             } else{
                 Toast.makeText(context, "Fallo al iniciar sesion", Toast.LENGTH_SHORT).show()
             }

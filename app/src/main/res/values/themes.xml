@@ -2,7 +2,8 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Habits" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/nord6</item>
+        <item name="colorSecondary">@color/nord5</item>
     </style>
 
     <style name="Theme.Habits" parent="Base.Theme.Habits" />
@@ -14,6 +15,10 @@
         <item name="windowSplashScreenAnimatedIcon">@drawable/splash_logo</item>
         <!-- Tema que se aplicará después de cerrar el splash -->
         <item name="postSplashScreenTheme">@style/Theme.Habits</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
     </style>
 
 </resources>
