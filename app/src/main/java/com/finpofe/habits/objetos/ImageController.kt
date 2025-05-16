@@ -1,4 +1,4 @@
-package com.finpofe.habits
+package com.finpofe.habits.objetos
 
 import android.app.Activity
 import android.content.Context
@@ -24,7 +24,7 @@ object ImageController {
                 directory.mkdirs()
             }
 
-            val fileName = "image_${System.currentTimeMillis()}.png"
+            val fileName = "image_pfp.png"
             val file = File(directory, fileName)
 
             val fos = FileOutputStream(file)

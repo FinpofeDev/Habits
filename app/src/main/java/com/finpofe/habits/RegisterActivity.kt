@@ -20,10 +20,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
+import com.finpofe.habits.objetos.ImageController
+import com.finpofe.habits.objetos.Usuario
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.auth
+import com.google.firebase.auth.userProfileChangeRequest
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.database
 import kotlinx.coroutines.delay
@@ -79,6 +82,7 @@ class RegisterActivity : AppCompatActivity() {
 
         selecImgProf.setOnClickListener {
             ImageController.seleccionarFotoDesdeGaleria(this, SELECT_ACTIVITY)
+            ImageController.guardarImagen(this, bitmapImgPerfil)
         }
 
         registerBtn.setOnClickListener {
@@ -102,12 +106,13 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun mostrarDatePicker() {
-        val datePickerDialog = DatePickerDialog(this, { DatePicker, year: Int, mes: Int, dia: Int ->
+        val datePickerDialog = DatePickerDialog(this, { datePicker, year: Int, mes: Int, dia: Int ->
             val fechaSeleccionada = Calendar.getInstance()
             fechaSeleccionada.set(year, mes, dia)
             val formatoFecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
             val fechaFormateada = formatoFecha.format(fechaSeleccionada.time)
             fechalbl.text = fechaFormateada
+            fechaNacimiento = fechalbl.text.toString()
         },
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
@@ -119,40 +124,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun registrarUsuario() {
-        nombreCompleto = nombretxt.text.toString()
-        correo = correotxt.text.toString()
-        pass = passtxt.text.toString()
-        rePass = repasstxt.text.toString()
-        fechaNacimiento = fechalbl.text.toString()
-
-        var mensaje = "Se ha producido un error"
-        var datosValidos = true
-
-        if(!correo.contains('@')) {
-            mensaje = "Ingrese un correo valido"
-            datosValidos = false
-        }
-        if(pass != rePass) {
-            mensaje = "Las contraseñas no coinciden"
-            datosValidos = false
-        }
-        if(pass.length < 6){
-            mensaje = "Las contraseñas debe tener al menos 6 caracteres"
-            datosValidos = false
-        }
-        if(fechaNacimiento == R.string.fecha_default.toString()) {
-            mensaje = "Seleccione una fecha de nacimiento"
-            datosValidos = false
-        }
-
-        if(bitmapImgPerfil == null) {
-            mensaje = "No selecciono foto de perfil"
-            datosValidos = false
-        }else {
-            nombreFotoPerfil = ImageController.guardarImagen(this@RegisterActivity, bitmapImgPerfil)
-        }
-
-        if(datosValidos) {
+        if(validarDatos()) {
             lifecycleScope.launch {
                 mostrarCarga()
                 delay(2000)
@@ -160,21 +132,66 @@ class RegisterActivity : AppCompatActivity() {
                     .addOnCompleteListener(this@RegisterActivity) { task ->
                         if (task.isSuccessful) {
                             val user: FirebaseUser? = auth.currentUser
-                            val userId = user?.uid.toString()
+                            val userId = user?.uid?: ""
+
                             val usuario = Usuario(nombreCompleto, correo, fechaNacimiento, nombreFotoPerfil)
                             database.child("users").child(userId).setValue(usuario)
-                            startActivity(Intent(this@RegisterActivity, MainActivity::class.java))
+
+                            val profileUpdates = userProfileChangeRequest {
+                                displayName = nombreCompleto
+                            }
+
+                            user?.updateProfile(profileUpdates)?.addOnCompleteListener { task2 ->
+                                if(task2.isSuccessful){
+                                    user.reload().addOnSuccessListener {
+                                        Toast.makeText(this@RegisterActivity, "Usuario registrado con exito.", Toast.LENGTH_SHORT).show()
+                                        startActivity(Intent(this@RegisterActivity, MainActivity::class.java))
+                                        finish()
+                                    }
+                                }
+                            }
                         } else {
                             Toast.makeText(this@RegisterActivity, "Ocurrio un error.", Toast.LENGTH_SHORT).show()
                         }
                     }
                 ocultarCarga()
             }
-        }else{
-            Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
         }
     }
 
+    private fun validarDatos(): Boolean {
+        nombreCompleto = nombretxt.text.toString()
+        correo = correotxt.text.toString()
+        pass = passtxt.text.toString()
+        rePass = repasstxt.text.toString()
+
+        var datosValidos = true
+
+        if(correo.isBlank() && nombreCompleto.isBlank() && pass.isBlank() && rePass.isBlank()){
+            Toast.makeText(this, "Rellene todos los campos", Toast.LENGTH_SHORT).show()
+            datosValidos = false
+        }
+        if(!correo.contains('@')) {
+            Toast.makeText(this, "Ingrese un correo valido", Toast.LENGTH_SHORT).show()
+            datosValidos = false
+        }
+        if(pass != rePass) {
+            Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
+            datosValidos = false
+        }
+        if(pass.length < 6){
+            Toast.makeText(this, "Las contraseñas debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show()
+            datosValidos = false
+        }
+        if(fechaNacimiento.isBlank()) {
+            Toast.makeText(this, "Seleccione una fecha de nacimiento", Toast.LENGTH_SHORT).show()
+            datosValidos = false
+        }
+
+        return datosValidos
+    }
+
+    @Deprecated("Utiliza una API antigua")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -211,5 +228,3 @@ class RegisterActivity : AppCompatActivity() {
     }
 
 }
-
-data class Usuario (val nombre: String? = null, val correo: String? = null, val fechaNacimiento: String? = null, val pfpNombre: String? = null)

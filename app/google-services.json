@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "4100401566",
+    "firebase_url": "https://habits-database-default-rtdb.firebaseio.com",
     "project_id": "habits-database",
     "storage_bucket": "habits-database.firebasestorage.app"
   },
@@ -14,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "4100401566-47ifb2b049rrjgipo0d08anuiknk4d3d.apps.googleusercontent.com",
+          "client_id": "4100401566-sb7uhna5a8uaipco67vubrp6qqfke6lm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.finpofe.habits",
-            "certificate_hash": "aa7a3037e0bd8fa030d36852e263674771652028"
+            "certificate_hash": "da68e69991016eeff0e11476397957bfa738caf0"
           }
         },
         {

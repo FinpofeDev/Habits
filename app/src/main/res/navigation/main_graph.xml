@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.finpofe.habits.fragments.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" />
+    <fragment
+        android:id="@+id/habitosFragment"
+        android:name="com.finpofe.habits.fragments.HabitosFragment"
+        android:label="fragment_habitos"
+        tools:layout="@layout/fragment_habitos" />
+    <fragment
+        android:id="@+id/logrosFragment"
+        android:name="com.finpofe.habits.fragments.LogrosFragment"
+        android:label="fragment_logros"
+        tools:layout="@layout/fragment_logros" />
+</navigation>
