@@ -1,12 +1,14 @@
 //Librerías para las excepciones y para las fechas
 import java.time.DateTimeException
-import java.time.LocalDate
+import java.util.Calendar
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class ObjFecha(
     private var dia:Int = 1,
     private var mes:Int = 1,
     private var year:Int = 2000
-    ){
+){
     init {
         validarFecha(dia,mes,year)
     }
@@ -30,14 +32,21 @@ class ObjFecha(
         return year
     }
 
-    public fun toLocalDate(): LocalDate{
-        return java.time.LocalDate.of(year,mes,dia)
+    //obtener fech como string
+    override fun toString(): String {
+        val calendario = Calendar.getInstance()
+        calendario.set(year,mes-1,dia)//mes empieza desde 0
+        val formato = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        return formato.format(calendario.time)
     }
 
     private fun validarFecha(dia:Int, mes:Int, year:Int){
+        val calendario = Calendar.getInstance()
+        calendario.isLenient = false //fuerza la validación estricta
         try{
-            java.time.LocalDate.of(year,mes,dia)
-        } catch (e: java.time.DateTimeException){
+            calendario.set(year,mes-1,dia)
+            calendario.time//dispara la validación
+        } catch(e: Exception){
             throw IllegalArgumentException("Fecha no válida: $dia/$mes/$year")
         }
     }
