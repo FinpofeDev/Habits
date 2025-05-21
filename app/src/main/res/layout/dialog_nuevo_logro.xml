@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/nord0"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <EditText
+        android:id="@+id/etNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/nord7"
+        android:hint="Nombre del logro"
+        android:textColorHint="@color/nord4"
+        android:minHeight="48dp"
+        android:textColor="@color/nord6" />
+
+    <EditText
+        android:id="@+id/etDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/nord7"
+        android:hint="Descripción"
+        android:textColorHint="@color/nord4"
+        android:minHeight="48dp"
+        android:textColor="@color/nord6" />
+
+    <EditText
+        android:id="@+id/etRecompensa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/nord7"
+        android:hint="Recompensa"
+        android:textColorHint="@color/nord4"
+        android:minHeight="48dp"
+        android:textColor="@color/nord6" />
+
+    <EditText
+        android:id="@+id/etFecha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/nord7"
+        android:hint="Fecha (dd/mm/aaaa)"
+        android:textColorHint="@color/nord4"
+        android:minHeight="48dp"
+        android:textColor="@color/nord6" />
+</LinearLayout>
