@@ -2,4 +2,20 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Polar Night -->
+    <color name="nord0">#2E3440</color>
+    <color name="nord1">#3B4252</color>>
+    <color name="nord2">#434C5E</color>>
+
+    <!-- Snow Storm -->
+    <color name="nord4">#D8DEE9</color>
+    <color name="nord5">#E5E9F0</color>
+    <color name="nord6">#ECEFF4</color>
+
+    <!-- Frost -->
+    <color name="nord7">#8FBCBB</color>
+    <color name="nord8">#88C0D0</color>
+    <color name="nord9">#81A1C1</color>
+
 </resources>
