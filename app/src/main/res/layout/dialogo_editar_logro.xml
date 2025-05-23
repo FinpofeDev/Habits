@@ -1,0 +1,60 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/nord0">
+
+    <EditText
+        android:id="@+id/etNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre"
+        android:minHeight="48dp"
+        android:textColorHint="@color/nord4"/>
+
+    <EditText
+        android:id="@+id/etDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Descripción"
+        android:minHeight="48dp"
+        android:textColorHint="@color/nord4"/>
+
+    <EditText
+        android:id="@+id/etRecompensa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Recompensa"
+        android:minHeight="48dp"
+        android:textColorHint="@color/nord4"/>
+
+    <!-- Campos individuales para día mes y año-->
+    <EditText
+        android:id="@+id/etDia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Día"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:textColorHint="@color/nord4"/>
+
+    <EditText
+        android:id="@+id/etMes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mes"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:textColorHint="@color/nord4"/>
+
+    <EditText
+        android:id="@+id/etYear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Año"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:textColorHint="@color/nord4"/>
+
+</LinearLayout>

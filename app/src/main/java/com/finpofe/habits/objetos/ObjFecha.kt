@@ -32,7 +32,7 @@ class ObjFecha(
         return year
     }
 
-    //obtener fech como string
+    //obtener fecha como string
     override fun toString(): String {
         val calendario = Calendar.getInstance()
         calendario.set(year,mes-1,dia)//mes empieza desde 0

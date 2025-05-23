@@ -1,39 +1,27 @@
-class ObjLogros {
-    private var nombre:String? = ""
-    private var descripcion:String? = ""
-    private var recompensa:String? = ""
-    private var fechaInicio=ObjFecha()
-    private var fechaFin=ObjFecha()
+class ObjLogros(
+    private var nombre: String = "",
+    private var descripcion: String = "",
+    private var recompensa: String = "",
+    private var fechaInicio: ObjFecha = ObjFecha(),
+    private var fechaFin: ObjFecha = ObjFecha(),
+    private var completado: Boolean = false
+) {
 
-    public  fun setNombre(nombre:String){
-        this.nombre = nombre
-    }
-    public fun setDescripcion(descripcion:String){
-        this.descripcion = descripcion
-    }
-    public fun setRecompensa(recompensa:String){
-        this.recompensa = recompensa
-    }
-    public fun setFechaInicio(fechaInicio:ObjFecha){
-        this.fechaInicio = fechaInicio
-    }
-    public fun setFechaFin(fechaFin:ObjFecha){
-        this.fechaFin = fechaFin
-    }
-    public fun getNombre():String?{
+    fun setNombre(nombre: String) { this.nombre = nombre }
+    fun getNombre(): String = nombre
 
-        return nombre
-    }
-    public fun getDescripcion():String?{
-        return descripcion
-    }
-    public fun getRecompensa():String?{
-        return recompensa
-    }
-    public fun getFechaInicio():ObjFecha{
-        return fechaInicio
-    }
-    public fun getFechaFin():ObjFecha{
-        return fechaFin
-    }
+    fun setDescripcion(descripcion: String) { this.descripcion = descripcion }
+    fun getDescripcion(): String = descripcion
+
+    fun setRecompensa(recompensa: String) { this.recompensa = recompensa }
+    fun getRecompensa(): String = recompensa
+
+    fun setFechaInicio(fechaInicio: ObjFecha) { this.fechaInicio = fechaInicio }
+    fun getFechaInicio(): ObjFecha = fechaInicio
+
+    fun setFechaFin(fechaFin: ObjFecha) { this.fechaFin = fechaFin }
+    fun getFechaFin(): ObjFecha = fechaFin
+
+    fun marcarComoCompletado(){completado = true}
+    fun estaCompleto():Boolean{return completado}
 }
