@@ -32,6 +32,8 @@
     <!-- Habits -->
     <string  name="habits">Habitos</string>
     <string name="add">Agregar</string>
+    <string name="delete">Eliminar</string>
+    <string name="edit">Editar</string>
     <string name="add_habit">Añade tu nuevo habito</string>
     <string name="create_habit">Crear Habito</string>
 

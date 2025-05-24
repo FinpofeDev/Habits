@@ -14,20 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         app:cardBackgroundColor="@color/nord0"
-        app:cardCornerRadius="12dp">
-
-        <TextView
-            android:id="@+id/vTHabits"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:text="@string/habits"
-            android:textAllCaps="true"
-            android:textColor="@color/nord6"
-            android:textSize="37sp"
-            android:textStyle="bold" />
-
-    </androidx.cardview.widget.CardView>
+        app:cardCornerRadius="12dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rVHabits"
@@ -51,6 +38,35 @@
         android:textSize="15sp"
         android:textStyle="bold"
         app:icon="@android:drawable/ic_input_add"
+        app:iconTint="@color/nord6" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/efabDeleteHabits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom"
+        android:backgroundTint="@color/nord0"
+        android:text="@string/delete"
+        android:textAllCaps="true"
+        android:textColor="@color/nord6"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:icon="@android:drawable/ic_delete"
+        app:iconTint="@color/nord6" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/efabEditHabits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:backgroundTint="@color/nord0"
+        android:text="@string/edit"
+        android:textAllCaps="true"
+        android:textColor="@color/nord6"
+        android:textSize="15sp"
+        android:layout_marginBottom="80dp"
+        android:textStyle="bold"
+        app:icon="@android:drawable/ic_menu_edit"
         app:iconTint="@color/nord6" />
 
 </FrameLayout>

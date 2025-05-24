@@ -1,6 +1,7 @@
 package com.finpofe.habits.objetos
 
 import ObjLogros
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,20 +32,20 @@ class AdapterLogros(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LogroViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_logro, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_logro, parent, false)
         return LogroViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: LogroViewHolder, position: Int) {
         val logro = lista[position]
-        holder.tvNombre.text = logro.getNombre()
-        holder.tvDescripcion.text = logro.getDescripcion()
-        holder.tvRecompensa.text = logro.getRecompensa()
-        holder.tvFecha.text = "${logro.getFechaFin().getDia()}/${logro.getFechaFin().getMes()}/${logro.getFechaFin().getYear()}"
+        holder.tvNombre.text = logro.nombre
+        holder.tvDescripcion.text = logro.descripcion
+        holder.tvRecompensa.text = logro.recompensa
+        holder.tvFecha.text = "${logro.fechaInicio.dia}/${logro.fechaInicio.mes}/${logro.fechaInicio.anio}"
 
         //Cambiar el fondo si esta completo nyejeje
-        if(logro.estaCompleto()){
+        if(logro.completado){
+            holder.tvNombre.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             holder.itemView.setBackgroundColor(ContextCompat.getColor(holder.itemView.context,R.color.nord9))
         } else{
             holder.itemView.setBackgroundResource(R.drawable.logro_card_bg)

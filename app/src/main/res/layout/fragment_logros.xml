@@ -15,15 +15,6 @@
         android:paddingEnd="8dp">
 
         <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_back"
-            android:contentDescription="Volver"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            app:tint="@color/nord9" />
-
-        <ImageButton
             android:id="@+id/btnAdd"
             android:layout_width="48dp"
             android:layout_height="48dp"
@@ -64,17 +55,6 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical">
-
-        <TextView
-            android:textColor="@color/nord6"
-            android:id="@+id/tvTitulo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Logros"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:paddingBottom="16dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerLogros"
