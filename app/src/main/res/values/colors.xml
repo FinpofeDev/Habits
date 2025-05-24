@@ -5,8 +5,8 @@
 
     <!-- Polar Night -->
     <color name="nord0">#2E3440</color>
-    <color name="nord1">#3B4252</color>>
-    <color name="nord2">#434C5E</color>>
+    <color name="nord1">#3B4252</color>
+    <color name="nord2">#434C5E</color>
 
     <!-- Snow Storm -->
     <color name="nord4">#D8DEE9</color>
@@ -17,5 +17,11 @@
     <color name="nord7">#8FBCBB</color>
     <color name="nord8">#88C0D0</color>
     <color name="nord9">#81A1C1</color>
+
+    <!-- Habits -->
+    <color name="habitsFuerte">#2F3541</color>
+    <color name="habitsMedio">#444B58</color>
+    <color name="habitsMedioBajo">#B6BBC3</color>
+    <color name="habitsDebil">#E5E7EB</color>
 
 </resources>

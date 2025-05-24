@@ -1,14 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/nord2"
+    android:padding="30dp"
     tools:context=".fragments.HabitosFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cVHabits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        app:cardBackgroundColor="@color/nord0"
+        app:cardCornerRadius="12dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rVHabits"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="32dp">
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/efabAddHabits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:backgroundTint="@color/nord0"
+        android:text="@string/add"
+        android:textAllCaps="true"
+        android:textColor="@color/nord6"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:icon="@android:drawable/ic_input_add"
+        app:iconTint="@color/nord6" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/efabDeleteHabits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom"
+        android:backgroundTint="@color/nord0"
+        android:text="@string/delete"
+        android:textAllCaps="true"
+        android:textColor="@color/nord6"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:icon="@android:drawable/ic_delete"
+        app:iconTint="@color/nord6" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/efabEditHabits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:backgroundTint="@color/nord0"
+        android:text="@string/edit"
+        android:textAllCaps="true"
+        android:textColor="@color/nord6"
+        android:textSize="15sp"
+        android:layout_marginBottom="80dp"
+        android:textStyle="bold"
+        app:icon="@android:drawable/ic_menu_edit"
+        app:iconTint="@color/nord6" />
 
 </FrameLayout>
+

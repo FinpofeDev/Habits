@@ -9,7 +9,14 @@
         android:id="@+id/mainFragment"
         android:name="com.finpofe.habits.fragments.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_habitosFragment"
+            app:destination="@id/habitosFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_logrosFragment"
+            app:destination="@id/logrosFragment" />
+    </fragment>
     <fragment
         android:id="@+id/habitosFragment"
         android:name="com.finpofe.habits.fragments.HabitosFragment"

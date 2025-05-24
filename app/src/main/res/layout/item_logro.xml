@@ -1,0 +1,42 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:backgroundTint="@color/nord1"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/logro_card_bg">
+
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre del logro"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="@color/nord6"/>
+
+    <TextView
+        android:id="@+id/tvDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descripción"
+        android:paddingTop="4dp"
+        android:textColor="@color/nord6"/>
+
+    <TextView
+        android:id="@+id/tvRecompensa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recompensa"
+        android:paddingTop="4dp"
+        android:textColor="@color/nord6"/>
+
+    <TextView
+        android:id="@+id/tvFecha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fecha: dd/mm/aa"
+        android:paddingTop="4dp"
+        android:textSize="12sp"
+        android:textColor="@color/nord6" />
+</LinearLayout>

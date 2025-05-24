@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.findNavController
 import com.finpofe.habits.objetos.Usuario
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.Firebase
@@ -44,7 +45,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navigationView.setNavigationItemSelectedListener(this)
 
         iniciarVariables()
-        //actualizarUI()
 
     }
 
@@ -70,15 +70,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         usuario = Usuario(nombre, correo, fechaNacimiento, "")
     }
 
-    private fun actualizarUI() {
-        bienvenidatxt.text = getString(R.string.bienvenida, usuario?.nombre?: "Invitado")
-    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.nav_item_1 -> Toast.makeText(this, "Prueba 1", Toast.LENGTH_SHORT).show()
-            R.id.nav_item_2 -> Toast.makeText(this, "Prueba 2", Toast.LENGTH_SHORT).show()
-            R.id.nav_item_3 -> Toast.makeText(this, "Prueba 3", Toast.LENGTH_SHORT).show()
+            R.id.nav_principal -> findNavController(R.id.navHostFragment).navigate(R.id.mainFragment)
+            R.id.nav_habitos -> findNavController(R.id.navHostFragment).navigate(R.id.habitosFragment)
+            R.id.nav_logros -> findNavController(R.id.navHostFragment).navigate(R.id.logrosFragment)
         }
         drawer.closeDrawer(GravityCompat.START)
         return true
