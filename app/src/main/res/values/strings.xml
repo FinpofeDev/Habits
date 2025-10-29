@@ -7,6 +7,7 @@
     <string name="email_text">Correo</string>
     <string name="pass_text">Contraseña</string>
     <string name="register_text">¿No estás registrado? Registrate</string>
+    <string name="password_forget_text">¿Olvidaste tu contraseña?</string>
     <string name="login_google">Iniciar con Google</string>
 
     <!-- Register layout -->
@@ -17,6 +18,11 @@
     <string name="campo_repass">Validar Contraseña</string>
     <string name="imagen_button">Seleccionar imagen</string>
     <string name="registro_button">Registrarse</string>
+
+    <!-- Password Recovery layout -->
+    <string name="pass_recovery_title">Recuperar cuenta</string>
+    <string name="pass_recovery_text">Ingrese un correo asociado a una cuenta de habits</string>
+    <string name="send_mail_button">Enviar correo</string>
 
     <!-- Main layout -->
     <string name="bienvenida">!Bienvenido %1$s!</string>
@@ -30,7 +36,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- Habits -->
-    <string  name="habits">Habitos</string>
+    <string name="habits">Habitos</string>
     <string name="add">Agregar</string>
     <string name="delete">Eliminar</string>
     <string name="edit">Editar</string>

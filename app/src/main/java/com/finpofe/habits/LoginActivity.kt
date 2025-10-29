@@ -44,6 +44,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var loginBtn: Button
     private lateinit var googlebtn: FrameLayout
     private lateinit var registerbtn: TextView
+    private lateinit var passForgetlbl: TextView
     private lateinit var context: Context
     private var loadingDialog: LoadingDialog? = null
 
@@ -71,6 +72,9 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
 
+        passForgetlbl.setOnClickListener {
+            startActivity(Intent(this, PasswordRecoveryActivity::class.java))
+        }
 
     }
 
@@ -80,6 +84,7 @@ class LoginActivity : AppCompatActivity() {
 
         emailEdt = findViewById(R.id.email_txt)
         passEdt = findViewById(R.id.password_txt)
+        passForgetlbl = findViewById(R.id.pass_forget_lbl)
         loginBtn = findViewById(R.id.login_btn)
         googlebtn = findViewById(R.id.container_login)
         registerbtn = findViewById(R.id.register_lbl)
