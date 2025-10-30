@@ -110,7 +110,7 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(context, "Inicio de sesion exitoso", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(context, MainActivity::class.java))
                 } else{
-                    Toast.makeText(context, "Fallo al iniciar sesion", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Correo o contraseña incorrectos", Toast.LENGTH_SHORT).show()
                 }
             }
         } else {

@@ -1,10 +1,9 @@
 package com.finpofe.habits
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -20,8 +19,6 @@ import com.google.firebase.auth.auth
 import com.google.firebase.database.database
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
-    private lateinit var bienvenidatxt: TextView
     private lateinit var drawer: DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
 
@@ -49,8 +46,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun iniciarVariables() {
-        //bienvenidatxt = findViewById(R.id.bienvenida_lbl)
-
         auth = Firebase.auth
         database = Firebase.database.reference
 
@@ -70,12 +65,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         usuario = Usuario(nombre, correo, fechaNacimiento, "")
     }
 
+    private fun cerrarSesion(){
+        auth.signOut()
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
+    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_principal -> findNavController(R.id.navHostFragment).navigate(R.id.mainFragment)
             R.id.nav_habitos -> findNavController(R.id.navHostFragment).navigate(R.id.habitosFragment)
             R.id.nav_logros -> findNavController(R.id.navHostFragment).navigate(R.id.logrosFragment)
+            R.id.nav_logout -> cerrarSesion()
         }
         drawer.closeDrawer(GravityCompat.START)
         return true
